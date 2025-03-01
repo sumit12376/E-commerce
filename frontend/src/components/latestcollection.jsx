@@ -23,7 +23,7 @@ function LatestCollection() {
           <div className="w-16 md:w-20 h-[2px] bg-[#414141]" />
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {productList.slice(0, 8).map((product) => (
   <ProductItem key={product.id} product={product} /> 
 ))}
