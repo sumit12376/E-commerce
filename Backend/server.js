@@ -3,7 +3,7 @@ const app = express();
 require("dotenv").config();
 const cors = require('cors');
 const connectdb = require('./config/mongodb.js');
-const connectCloudinary = require("./config/connectcloudinary.js");
+const connectCloudinary = require("./config/connectCloudinary.js");
 const userRouter = require('./routes/userrouter.js');
 const productRouter = require('./routes/productroute.js');
 const cartrouter=require('./routes/cartrouter.js');
