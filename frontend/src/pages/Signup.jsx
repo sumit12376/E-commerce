@@ -38,7 +38,7 @@ function Signup() {
     }
   
     try {
-      const response = await axios.post('http://localhost:3000/api/user/v1/register', {
+      const response = await axios.post('https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/user/v1/register', {
         name: signup.name,
         email: signup.email,
         password: signup.password,

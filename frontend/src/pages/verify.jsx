@@ -16,7 +16,7 @@ useEffect(() => {
 
 
           const response = await axios.post(
-              "http://localhost:3000/api/order/v1/verify",
+              "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/order/v1/verify",
               { success, orderId },
               { headers: { Authorization: `Bearer ${token}` } }
           );

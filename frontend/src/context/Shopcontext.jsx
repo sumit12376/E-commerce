@@ -30,7 +30,7 @@ const ShopContextProvider = (props) => {
     if (token) {
       try {
         const response = await axios.post(
-         "http://localhost:3000/api/cart/v1/addtocart",
+         "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/cart/v1/addtocart",
           { itemId, size },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -51,7 +51,7 @@ const ShopContextProvider = (props) => {
     if (token) {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/cart/v1/getcart",
+          "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/cart/v1/getcart",
           { headers: { Authorization: `Bearer ${token}` } } 
         );
         
@@ -69,7 +69,7 @@ const ShopContextProvider = (props) => {
     if (token) {
       try {
         const response = await axios.put(
-          "http://localhost:3000/api/cart/v1/update",
+          "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/cart/v1/update",
           { itemId, size, quantity: 0 }, 
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -88,7 +88,7 @@ const ShopContextProvider = (props) => {
 
   const getproductdata = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/product/v1/list");
+      const response = await axios.get("https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/product/v1/list");
       setproducts(response.data.message);
      
     } catch (error) {

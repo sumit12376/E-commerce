@@ -62,7 +62,7 @@ function Placeorder() {
       switch (formData.paymentMethod) {
         case "cash":
           response = await axios.post(
-            "http://localhost:3000/api/order/v1/place",
+            "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/order/v1/place",
             orderData,
             {
               headers: { Authorization: `Bearer ${token}` },
@@ -74,7 +74,7 @@ function Placeorder() {
   
           case "stripe":
             response = await axios.post(
-                "http://localhost:3000/api/order/v1/stripe",
+                "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/order/v1/stripe",
                 orderData,
                 {
                     headers: { Authorization: `Bearer ${token}` },

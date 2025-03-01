@@ -6,7 +6,7 @@ function Order({ token }) {
   const fetchAllOrders = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/order/v1/list",
+        "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/order/v1/list",
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -27,7 +27,7 @@ function Order({ token }) {
   const updateStatus = async (orderId, status) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/order/v1/status",
+        "https://elitemart-sumit-vikram-singhs-projects.vercel.app/api/order/v1/status",
         { orderId, status },
         {
           headers: { Authorization: `Bearer ${token}` },
