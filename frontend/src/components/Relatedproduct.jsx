@@ -15,7 +15,7 @@ function Relatedproduct({ category, subcategory }) {
       setRelated(productCopy.slice(0, 5)); 
     }
 
-
+//satrt with 0,0
     window.scrollTo(0, 0);
   }, [products, category, subcategory]); 
 
