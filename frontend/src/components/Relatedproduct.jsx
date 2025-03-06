@@ -8,16 +8,17 @@ function Relatedproduct({ category, subcategory }) {
 
   useEffect(() => {
     if (products.length > 0) {
-      let productCopy = products
-        .filter((item) => category === item.category)
-        .filter((item) => subcategory === item.subcategory);
-      
-      setRelated(productCopy.slice(0, 5)); 
-    }
+      const filteredProducts = products.filter(
+        (item) => item.category === category && item.subcategory === subcategory
+      );
 
-//satrt with 0,0
-    window.scrollTo(0, 0);
+      setRelated(filteredProducts.slice(0, 5));
+    }
   }, [products, category, subcategory]); 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [category, subcategory]);
 
   return (
     <div className="my-24">
@@ -27,11 +28,16 @@ function Relatedproduct({ category, subcategory }) {
         </p>
         <div className="w-16 md:w-20 h-[2px] bg-[#414141]" />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {related.map((product) => (
-          <ProductItem key={product._id} product={product} />
-        ))}
-      </div>
+
+      {related.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {related.map((product) => (
+            <ProductItem key={product._id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center text-gray-500">No related products found.</p>
+      )}
     </div>
   );
 }
