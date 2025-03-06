@@ -1,31 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ShopContext } from '../context/Shopcontext';
-import { assets } from '../assets/assets';
-import Relatedproduct from '../components/Relatedproduct';
 import { toast } from 'react-toastify';
+import Relatedproduct from '../components/Relatedproduct';
 
 function Product() {
   const { productid } = useParams();
   const { currency, products, addtocart, token } = useContext(ShopContext);
   const [productdata, setProductdata] = useState(null);
   const [mainImage, setMainImage] = useState(null);
-  const [size, setsize] = useState('');
+  const [size, setSize] = useState('');
   const navigate = useNavigate();
 
-  const fetchproduct = async () => {
-    const product = products.find((item) => item._id === productid);
-    if (product) {
-      setProductdata(product);
-      setMainImage(product.image[0]);
-    } else {
-      setProductdata(null); // Handle case where product is not found
-    }
-  };
-
   useEffect(() => {
-    fetchproduct();
-  }, [productid, products]); // Add `products` to dependency array
+    const fetchProduct = () => {
+      const product = products.find((item) => item._id === productid);
+      if (product) {
+        setProductdata(product);
+        setMainImage(product.image[0]);
+      } else {
+        setProductdata(null);
+      }
+    };
+
+    fetchProduct();
+    window.scrollTo(0, 0); // Scroll to top when product changes
+  }, [productid, products]);
 
   const handleThumbnailClick = (image) => {
     setMainImage(image);
@@ -81,8 +81,6 @@ function Product() {
 
         <div className="w-full lg:w-[40%] flex flex-col text-center lg:text-left">
           <h1 className="text-2xl md:text-3xl font-bold">{productdata.name}</h1>
-          <div className="flex justify-center lg:justify-start items-center gap-1 mt-2">
-          </div>
           <p className="text-gray-600 mt-2">{productdata.description}</p>
           <p className="text-2xl font-semibold mt-4">
             {currency}
@@ -100,7 +98,7 @@ function Product() {
               {productdata.size.map((item, index) => (
                 <button
                   key={index}
-                  onClick={() => setsize(item)}
+                  onClick={() => setSize(item)}
                   className={`border py-2 px-4 bg-gray-100 ${item === size ? 'border-orange-500' : 'border-gray-300'}`}
                   aria-label={`Select size ${item}`}
                 >
