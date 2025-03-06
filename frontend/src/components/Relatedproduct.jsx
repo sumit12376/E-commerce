@@ -14,7 +14,11 @@ function Relatedproduct({ category, subcategory }) {
       
       setRelated(productCopy.slice(0, 5)); 
     }
+
+
+    window.scrollTo(0, 0);
   }, [products, category, subcategory]); 
+
   return (
     <div className="my-24">
       <div className="flex items-center gap-2 py-7">
@@ -32,4 +36,4 @@ function Relatedproduct({ category, subcategory }) {
   );
 }
 
-export default Relatedproduct
+export default Relatedproduct;
